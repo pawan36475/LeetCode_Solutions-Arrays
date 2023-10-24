@@ -7,7 +7,6 @@ class Solution {
 
         int result[] = new int[nums.length];
         int[] frequency = new int[maximum + 1];
-        int[] cumulativeSum = new int[maximum + 1];
 
         for (int i = 0; i < nums.length; i++)
             frequency[nums[i]]++;
