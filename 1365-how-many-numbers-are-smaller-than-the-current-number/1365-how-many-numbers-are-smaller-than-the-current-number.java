@@ -1,8 +1,13 @@
 class Solution {
     public int[] smallerNumbersThanCurrent(int[] nums) {
+         int maximum = 0;
+
+        for (int m = 0; m < nums.length; m++)
+            maximum = Math.max(nums[m], maximum);
+
         int result[] = new int[nums.length];
-        int[] frequency = new int[102];
-        int[] cumulativeSum = new int[102];
+        int[] frequency = new int[maximum + 1];
+        int[] cumulativeSum = new int[maximum + 1];
 
         for (int i = 0; i < nums.length; i++)
             frequency[nums[i]]++;
@@ -11,13 +16,11 @@ class Solution {
             frequency[j] = frequency[j] + frequency[j - 1];
 
         for (int k = 0; k < nums.length; k++) {
-            if (nums[k] == 0) {
-                result[k] = 0;
-            } else{
-            result[k] = frequency[nums[k] - 1];
-        }
+
+            result[k] = nums[k] == 0 ? 0 : frequency[nums[k] - 1];
+
         }
 
-        return result;
+        return result; 
     }
 }
